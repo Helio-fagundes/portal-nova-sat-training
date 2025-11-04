@@ -18,7 +18,6 @@ O projeto serve como laboratório para que novos integrantes da equipe se famili
 ## 🚀 Como executar o projeto
 
 ### 1️⃣ Clonar o repositório
-```bash
 
 http://gitlab.mprj.mp.br/gate/portal-nova-sat-training.git
 
