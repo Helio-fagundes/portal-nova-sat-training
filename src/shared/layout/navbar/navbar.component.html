@@ -1,0 +1,19 @@
+<header id="navigationContent">
+  <h3 id="logo">
+    <a routerLink="/home">Portal Nova SAT</a>
+  </h3>
+
+  <nav id="content" [class.hidden]="isMenuOpen">
+    <a routerLink="/home" (click)="closeMenu()">Home</a>
+    <a routerLink="/about" (click)="closeMenu()">About</a>
+    <a routerLink="/contact" (click)="closeMenu()">Contact</a>
+  </nav>
+
+  <button id="menuButton" (click)="toggleMenu()">☰</button>
+
+  <div id="mobileMenu" [class.open]="isMenuOpen">
+    <a routerLink="/home" (click)="closeMenu()">Home</a>
+    <a routerLink="/about" (click)="closeMenu()">About</a>
+    <a routerLink="/contact" (click)="closeMenu()">Contact</a>
+  </div>
+</header>

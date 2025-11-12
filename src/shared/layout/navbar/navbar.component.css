@@ -1,0 +1,98 @@
+#navigationContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #242424;
+  color: white;
+  padding:35px 30px;
+  position: relative;
+}
+
+#logo{
+  position: absolute;
+  left: 30px;
+}
+
+#logo a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+#logo a:hover {
+  text-decoration: underline;
+  color: gray;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#content a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+#content a:hover {
+  text-decoration: underline;
+  color: gray;
+}
+
+#menuButton {
+  display: none;
+  font-size: 30px;
+  background: #242424;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+}
+
+#mobileMenu {
+  display: none;
+  flex-direction: column;
+  background-color: #242424;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  padding: 20px;
+  gap: 15px;
+  align-items: center;
+  z-index: 15;
+  border-bottom: 2px solid black;
+  transition: all 0.3s ease-in-out;
+}
+
+#mobileMenu a {
+  margin-top: 10px;
+  display: none;
+  text-decoration: none;
+  color: white;
+}
+
+#mobileMenu.open {
+  display: flex;
+}
+
+@media (max-width: 700px) {
+  #content {
+    display: none;
+  }
+
+  #menuButton {
+    display: block;
+  }
+
+  #mobileMenu a {
+    display: block;
+  }
+}
