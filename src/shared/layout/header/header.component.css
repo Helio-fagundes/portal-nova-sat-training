@@ -1,0 +1,31 @@
+#header{
+  background-color: black;
+  height: 7%;
+  position: top;
+  display: flex;
+  align-items: center;
+}
+
+#logo{
+  position: absolute;
+  left: 30px;
+}
+
+#logo a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+#logo a:hover {
+  text-decoration: underline;
+  color: gray;
+}
+
+
+@media (max-width: 720px) {
+
+  #menuButton{
+    display: flex;
+  }
+}
