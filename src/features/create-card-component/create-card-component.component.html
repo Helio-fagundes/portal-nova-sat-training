@@ -1,3 +1,52 @@
 <app-header></app-header>
-<app-navbar></app-navbar>
+<main class="conteiner">
+  <h3 id="buttonBackTheHome" routerLink="/home">←Voltar</h3>
+  <form id="formulario">
+    <nav id="content">
+      <h1>Numeração do PA/IC:</h1>
+      <input id="input"
+             type="text"
+             name="numeroPAIC"
+             placeholder="Numero do PA/IC"
+             maxlength="10"
+             pattern="\d*"
+             inputmode="numeric"
+             [(ngModel)]="formData.numberPaIc"/>
+    </nav>
 
+    <nav id="content">
+      <h1>Objetivo:</h1>
+      <input id="input" type="text"
+             [(ngModel)]="formData.objective"
+             name="objetivo"
+             placeholder="Objetivo"/>
+    </nav>
+
+    <nav id="content">
+      <h1>Descrição: </h1>
+      <textarea id="textArea" cols="40" rows="10"
+                [(ngModel)]="formData.description"
+                name="descricao"
+                placeholder="Descrição ou Detalhes"></textarea>
+    </nav>
+
+    <nav id="content">
+      <h1>Upload de Documentos</h1>
+      <input id="fileDocuments" type="file" multiple
+             (change)="onFileSelected($event)"
+             name="arquivos" />
+      <ul>
+        <li *ngFor="let file of selectedFiles">
+          {{ file.name }} - {{ (file.size / 1024) | number:'1.0-0' }} KB
+        </li>
+      </ul>
+    </nav>
+
+    <button id="buttonCreateCard"
+            type="button"
+            routerLink="/home"
+            (click)="clickSubmit(); submitForm();">
+      Criar Card
+    </button>
+  </form>
+</main>

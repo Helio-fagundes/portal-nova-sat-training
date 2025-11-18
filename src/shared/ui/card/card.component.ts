@@ -8,9 +8,9 @@ import {Component, Input} from '@angular/core';
 })
 export class CardComponent {
   @Input() cardJson: object = {
-    title: 'Default Title',
+    numberPaIc: 'Default Number Pa/Ic',
+    objective: 'Default Objective',
     description: 'Default Description',
-    imageUrl: 'https://via.placeholder.com/150',
-    linkUrl: '#'
+    imageUrl: 'https://via.placeholder.com/150'
   };
 }

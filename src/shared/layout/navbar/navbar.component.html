@@ -1,15 +1,41 @@
 <body class="navigationContent">
-  <nav id="content" [class.hidden]="isMenuOpen">
-    <div id="contact"><a routerLink="/newsat" (click)="closeMenu()">New SAT</a></div>
-    <div id="home"><a routerLink="/home" (click)="closeMenu()">Home</a></div>
-    <div id="about"><a routerLink="/about" (click)="closeMenu()">About</a></div>
-    <div id="contact"><a routerLink="/contact" (click)="closeMenu()">Contact</a></div>
-  </nav>
+<nav id="content" [class.hidden]="isMenuOpen">
+
+  <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="/newsat" (click)="closeMenu()">
+      <img src="assets/add_circle_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="New SAT Icon" id="newSatIcon"/>
+      New SAT
+    </a>
+  </div>
+
+  <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="/home" (click)="closeMenu()">
+      <img src="assets/home_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Home Icon" id="homeIcon"/>
+      Home
+    </a>
+  </div>
+
+  <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="/about" (click)="closeMenu()">
+      <img src="assets/account_box_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="About Icon" id="aboutIcon"/>
+      About
+    </a>
+  </div>
+
+  <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="/contact" (click)="closeMenu()">
+      <img src="assets/contact_page_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Contact Icon" id="contactIcon"/>
+      Contact
+    </a>
+  </div>
+
+</nav>
 </body>
 
-<button id="menuButton" (click)="toggleMenu()">☰</button>
+<button id="menuButton" [class.active]="isMenuOpen" (click)="toggleMenu()">☰</button>
 
-<div id="mobileMenu" [class.open]="isMenuOpen">
+<div class="mobileMenu" [class.open]="isMenuOpen">
+  <a routerLink="/newsat" (click)="closeMenu()">New SAT</a>
   <a routerLink="/home" (click)="closeMenu()">Home</a>
   <a routerLink="/about" (click)="closeMenu()">About</a>
   <a routerLink="/contact" (click)="closeMenu()">Contact</a>
