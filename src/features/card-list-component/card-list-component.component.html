@@ -8,3 +8,9 @@
     <p>{{ card.description }}</p>
   </div>
 </div>
+@if (cards.length == 0) {
+    <Nav id="notHaveCards">
+      <h1>Não há cards para serem exibidos.</h1>
+      <p>Parece que ainda não possui nenhuma sat preparada, caso precise iniciar uma, abra no <a routerLink="/newsat">New Sat</a>!</p>
+    </Nav>
+  }

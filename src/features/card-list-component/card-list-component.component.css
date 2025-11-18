@@ -40,10 +40,24 @@
   margin-bottom: -15px;
 }
 
+#notHaveCards{
+  display: grid;
+    justify-content: center;
+    grid-template-columns: 60%;
+    margin-left: 20%;
+    text-align: center;
+    margin-top: 130px;
+}
+
 @media (max-width: 720px) {
   .cards-container {
     margin-left: 0;
     grid-template-columns: 1fr;
+  }
+
+  #notHaveCards{
+    grid-template-columns: 80%;
+    margin-left: 0;
   }
 }
 
