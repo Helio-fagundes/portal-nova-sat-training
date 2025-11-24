@@ -11,6 +11,10 @@
     min-width: 350px;
 }
 
+#imageCoruja{
+  transition: all 0.3s ease;
+}
+
 #tituloInstitucional{
   margin-top: -50px;
   color: coral;
@@ -34,5 +38,6 @@
     .container{
         grid-template-columns: 80%;
         margin-left: 0;
+        transition: all 0.3s ease;
     }
 }

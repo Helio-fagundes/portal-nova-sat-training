@@ -17,6 +17,11 @@
   text-align: start;
 }
 
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.3s ease-in-out;
+}
+
 #colorInCard{
   height: 2px;
   background-color: coral;
@@ -47,9 +52,10 @@
     margin-left: 20%;
     text-align: center;
     margin-top: 130px;
+    transition: margin-left 0.3s ease-in-out;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .cards-container {
     margin-left: 0;
     grid-template-columns: 1fr;

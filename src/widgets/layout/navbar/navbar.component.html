@@ -3,29 +3,36 @@
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/newsat" (click)="closeMenu()">
-      <img src="assets/add_circle_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="New SAT Icon" id="newSatIcon"/>
+      <img src="../../../assets/add_circle_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="New SAT Icon" id="newSatIcon"/>
       New SAT
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/home" (click)="closeMenu()">
-      <img src="assets/home_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Home Icon" id="homeIcon"/>
+      <img src="../../../assets/home_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Home Icon" id="homeIcon"/>
       Home
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/about" (click)="closeMenu()">
-      <img src="assets/account_box_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="About Icon" id="aboutIcon"/>
+      <img src="../../../assets/account_box_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="About Icon" id="aboutIcon"/>
       About
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/contact" (click)="closeMenu()">
-      <img src="assets/contact_page_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Contact Icon" id="contactIcon"/>
+      <img src="../../../assets/contact_page_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Contact Icon" id="contactIcon"/>
       Contact
+    </a>
+  </div>
+
+  <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a (click)="closeMenu(); openLogout()">
+      <img src="../../../assets/botaoLogout.png" id="logoutIcon"/>
+      Logout
     </a>
   </div>
 
@@ -39,4 +46,16 @@
   <a routerLink="/home" (click)="closeMenu()">Home</a>
   <a routerLink="/about" (click)="closeMenu()">About</a>
   <a routerLink="/contact" (click)="closeMenu()">Contact</a>
+  <a (click)="closeMenu(); openLogout()">Logout</a>
+</div>
+
+<div class="logout-overlay" *ngIf="showLogout">
+  <div class="screenLogout">
+    <h2>Deseja realmente sair?</h2>
+
+    <div class="logout-buttons">
+      <button class="btn-yes" (click)="confirmLogout()">Sim</button>
+      <button class="btn-no" (click)="cancelLogout()">Não</button>
+    </div>
+  </div>
 </div>

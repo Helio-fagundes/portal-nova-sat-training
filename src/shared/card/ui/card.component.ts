@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-ui',
   imports: [],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'

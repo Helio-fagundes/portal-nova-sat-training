@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {NavbarComponent} from '../../shared/layout/navbar/navbar.component';
-import { HeaderComponent } from "../../shared/layout/header/header.component";
+import {NavbarComponent} from '../../widgets/layout/navbar/navbar.component';
+import { HeaderComponent } from "../../widgets/layout/header/header.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {NavbarComponent} from '../../shared/layout/navbar/navbar.component';
-import { HeaderComponent } from "../../shared/layout/header/header.component";
-import {CardListComponentComponent} from '../../features/card-list-component/card-list-component.component';
+import {NavbarComponent} from '../../widgets/layout/navbar/navbar.component';
+import { HeaderComponent } from "../../widgets/layout/header/header.component";
+import {CardListComponentComponent} from "../../features/createAndListCards/card-list-component/card-list-component.component";
 
 @Component({
   selector: 'app-dashboard',

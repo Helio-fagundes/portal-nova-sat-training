@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {HeaderComponent} from '../../shared/layout/header/header.component';
-import {CardService} from '../services/card/card.service';
+import {HeaderComponent} from '../../../widgets/layout/header/header.component';
+import {CardService} from '../../../shared/card/service/card.service';
 import {RouterLink} from '@angular/router';
 
 @Component({
-  selector: 'app-create-card-component',
+  selector: 'app-create-ui-component',
   imports: [FormsModule, CommonModule, HeaderComponent, RouterLink],
   templateUrl: './create-card-component.component.html',
   styleUrl: './create-card-component.component.css'

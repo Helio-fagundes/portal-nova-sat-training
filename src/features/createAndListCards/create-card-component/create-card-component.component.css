@@ -26,6 +26,10 @@
   margin-bottom: 15px;
 }
 
+#input, #textarea{
+  border: 1px solid black;
+}
+
 #buttonBackTheHome{
   color: darkcyan;
   height: 30px;
@@ -49,6 +53,11 @@
   text-align: center;
   border-radius: 15px;
   margin-top: 20px;
+  cursor: pointer;
+}
+
+#buttonCreateCard:hover{
+  background-color: rgb(248, 110, 60);
 }
 
 #textArea{
