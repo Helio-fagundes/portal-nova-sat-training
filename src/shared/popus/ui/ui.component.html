@@ -1,0 +1,22 @@
+<div class="popup-overlay">
+  <div class="popup-container">
+
+    <div *ngIf="typeImg === 'success'" class="icon-wrapper icon-success">
+      <img src="assets/successImg.png" />
+    </div>
+
+    <div *ngIf="typeImg === 'warning'" class="icon-wrapper icon-warning">
+      <img src="assets/warningImg.png" />
+    </div>
+
+    <div *ngIf="typeImg === 'error'" class="icon-wrapper icon-error">
+      <img src="assets/errorImg.png" />
+    </div>
+
+    <h2 *ngIf="title" id="title">{{ title }}</h2>
+    <p *ngIf="message" id="message">{{ message }}</p>
+
+    <button (click)="confirm.emit()" *ngIf="confirmText" id="buttonConfirmed">{{ confirmText }}</button>
+    <button (click)="cancel.emit()" *ngIf="cancelText" id="buttonCancel">{{ cancelText }}</button>
+  </div>
+</div>
