@@ -67,8 +67,10 @@
 .formCompleto{
   display: flex;
   max-height: 400px;
+  width: 100%;
   justify-content: center;
   align-items: center;
+  transition: all 0.3 ease;
 }
 
 #formGroupLogin,
@@ -81,7 +83,6 @@
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
   display: none;
   justify-self: center;
   width: 60%;

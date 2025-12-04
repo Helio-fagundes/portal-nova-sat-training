@@ -10,7 +10,7 @@ export class UsersServiceService {
 
 constructor(private http: HttpClient) { }
 
-private apiUrl = 'http://localhost:3000/users';
+private apiUrl = '/users';
 
   get(): Observable<UsersInterface[]>{
     return this.http.get<UsersInterface[]>(this.apiUrl);

@@ -2,7 +2,7 @@
   display: grid;
 
 }
-#content{
 
+body{
+  background-color: var(--cor-fundo);
 }
-
