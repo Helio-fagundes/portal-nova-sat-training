@@ -1,0 +1,42 @@
+.custum-file-upload {
+  height: 60px;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  gap: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--text-color);
+  background-color: var(--input-contact);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+  height: 50px;
+  fill: var(--color-black);
+}
+
+.custum-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .text span {
+  font-weight: 400;
+  color: var(--color-black);
+  font-weight: var(--font-medium);
+}
+
+.custum-file-upload input {
+  display: none;
+}
