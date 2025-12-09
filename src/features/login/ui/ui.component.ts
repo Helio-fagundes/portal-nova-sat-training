@@ -7,6 +7,7 @@ import {NgIf} from '@angular/common';
 import {UiComponentPopup} from '../../../shared/popus/ui/ui.component';
 import {UsersServiceService} from '../../users/service/usersService.service';
 import {ButtonThemeToggleComponent} from '../../../shared/button-theme-toggle/button-theme-toggle.component';
+import {ValidationUtils} from '../../../utils/ValidationUtils';
 
 @Component({
   selector: 'app-ui',
@@ -65,49 +66,10 @@ export class UiComponent {
     }
   }
 
-  validationName(name: string): any{
-    const regexName = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{4,}$/;
-    switch(name.length > 0){
-      case name === ' ':
-        return false;
-      case name.length < 4:
-        return false;
-      case (!regexName.test(name)):
-        return false;
-    }
-    return true;
-  }
-
-  validationEmail(email: string): any{
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    switch(email.length > 0){
-      case email === ' ':
-        return false;
-      case email.length < 5:
-        return false;
-      case (!regexEmail.test(email)):
-      return false;
-    }
-    return true;
-  }
-
-  validationPassword(password: string): any{
-    const regexSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    switch(password.length > 0){
-      case password === ' ':
-        return false;
-      case password.length < 8:
-        return false;
-      case (!regexSenha.test(password)):
-        return false;
-    }
-    return true;
-  }
-
   addUser() {
-    const isNameValid = this.validationName(this.user.name);
-    const isEmailValid = this.validationEmail(this.user.email);
-    const isPasswordValid = this.validationPassword(this.user.password);
+    const isNameValid = ValidationUtils.validationName(this.user.name);
+    const isEmailValid = ValidationUtils.validationEmail(this.user.email);
+    const isPasswordValid = ValidationUtils.validationPassword(this.user.password);
 
     if (!isNameValid || !isEmailValid || !isPasswordValid) {
       this.popupErrorToggle = true;
@@ -134,8 +96,8 @@ export class UiComponent {
 
 
   login() {
-    const isEmailValid = this.validationEmail(this.user.email);
-    const isPasswordValid = this.validationPassword(this.user.password);
+    const isEmailValid = ValidationUtils.validationEmail(this.user.email);
+    const isPasswordValid = ValidationUtils.validationPassword(this.user.password);
 
     if (!isEmailValid || !isPasswordValid) {
       this.popupErrorToggle = true;

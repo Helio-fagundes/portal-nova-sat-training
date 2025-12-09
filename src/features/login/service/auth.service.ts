@@ -15,9 +15,6 @@ export class AuthService {
   constructor(private router: Router,
               private userService: UsersServiceService) {}
 
-  private userSource = new BehaviorSubject<any[]>([]);
-  $user = this.userSource.asObservable();
-
   addUser(user: User): void {
     this.userService.getByEmail(user.email).subscribe({
       next: (users) => {

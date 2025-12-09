@@ -7,12 +7,14 @@ import { CreateCardComponentComponent } from '../features/createCards/ui/create-
 import {UiComponent} from '../features/login/ui/ui.component';
 import {AuthGuard} from '../features/login/guard/auth.guard';
 import { UsersFormComponent } from '../features/users/users-form/users-form.component';
+import { UsersListComponent } from '../features/users/users-list/users-list.component';
 
 export const routes: Routes = [
   {path: 'home', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
   {path: 'about', component: ContactComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UsersFormComponent, canActivate: [AuthGuard]},
+  {path: 'users', component: UsersListComponent, canActivate: [AuthGuard]},
   {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]},
   {path: 'newsat', component: CreateCardComponentComponent, canActivate: [AuthGuard]},
   {path: 'login', component: UiComponent},

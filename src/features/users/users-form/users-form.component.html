@@ -1,25 +1,38 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 
-<div class="container">
+<div class="container" [class.open]="menuIsOpen">
   <div class="contentExternal">
-    <h1>Usuários</h1>
-    <div class="containerContent">
-    <nav id="navContent" (click)="postAdicionarUsuarios()" >
-      <h2>Adicionar</h2>
-    </nav>
-    <nav id="navContent" (click)="getListaUsuarios()">
-      <h2>Listar</h2>
-    </nav>
-    <nav id="navContent" (click)="putUsuario('18cc')">
-      <h2>Editar</h2>
-    </nav>
-    <nav id="navContent" (click)="deleteUsuario('cdbf')">
-      <h2>Deletar</h2>
-    </nav>
-  </div>
-  </div>
-  <div *ngFor = "let users of listaUsuarios">
-    <p>{{users.name}}</p>
+    <h1>Criar Usuários</h1>
+      <form name="forms" #forms="ngForm" (ngSubmit)="postAdicionarUsuarios()">
+        <div id="formGroup">
+          <label for="name">Nome: </label>
+          <input type="text" id="input" name="name" required placeholder="Nome" [(ngModel)]="user.name">
+          <br>
+          <label for="email">Email: </label>
+          <input type="email" id="input" name="email" required placeholder="Email" [(ngModel)]="user.email">
+          <br>
+          <label for="password">Senha: </label>
+          <input id="input" name="password" required placeholder="Senha" type="password" [(ngModel)]="user.password">
+          <br>
+          <button type="submit" id="buttonSubmit" (click)="postAdicionarUsuarios()" [disabled]="forms.invalid">Criar</button>
+        </div>
+      </form>
   </div>
 </div>
+
+<app-popup
+  *ngIf="popupPostCreated"
+  title="Sucesso"
+  message="o Usuario foi criado com sucesso"
+  confirmText="Ok"
+  (confirm)="showPopup()">
+</app-popup>
+
+<app-popup
+  *ngIf="popupPostError"
+  title="Error"
+  message="o Usuario não foi criado, tente novamente."
+  confirmText="Ok"
+  (confirm)="showPopup()">
+</app-popup>

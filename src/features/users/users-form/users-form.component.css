@@ -1,5 +1,5 @@
 .container {
-  display: grid;
+  display: none;
   grid-template-columns: minmax(500px, 40%);
   justify-content: center;
   text-align: center;
@@ -8,48 +8,73 @@
   transition: var(--transition-normal);
 }
 
+.container.open {
+  display: grid;
+}
+
 .contentExternal {
-  background-color: var(--color-white);
-  border: var(--border-thin);
+  background-color: var(--background-contact);
+  border: var(--border-medium);
   align-items: center;
   border-radius: var(--radius-lg);
   margin-top: 150px;
 }
 
-.containerContent {
-  display: grid;
-  grid-template-columns: minmax(150px, 35%) minmax(150px, 35%);
-  grid-template-rows: minmax(150px, 35%) minmax(150px, 35%);
-  justify-content: center;
-  margin-top: 100px;
-  gap: 1px;
+.contentExternal h1 {
+  color: var(--color-titles);
+  margin-top: 50px;
 }
 
-#navContent {
+#formGroup {
   display: flex;
-  border: var(--border-thin);
-  width: 100%;
+  flex-direction: column;
+  padding: 40px;
   height: 100%;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition-normal);
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: var(--color-gray-100);
-  color: var(--text-color);
 }
 
-#navContent:hover {
+#formGroup label {
+  text-align: left;
+  color: var(--color-text);
+}
+
+#formGroup  input{
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  background-color: var(--input-contact);
+  color: var(--text-light);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-contact) inset !important;
+  -webkit-text-fill-color: var(--text-light) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#formGroup button {
   background-color: var(--color-primary);
-  transform: translateY(-3px) translateX(-3px);
-  width: 102%;
-  height: 102%;
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-md);
+  transition: background-color 0.3s ease;
+  margin-top: 90px;
+}
+
+#formGroup button:hover {
+  background-color: var(--color-primary-dark);
 }
 
 @media (max-width: 767px) {
   .container {
     margin-left: 0;
-    grid-template-columns: minmax(400px, 40%);
+    grid-template-columns: minmax(400px, 80%);
   }
 }
