@@ -17,13 +17,8 @@
 
 #logoFrase a {
   text-decoration: none;
-  color: var(--text-inverse);
+  color: white;
   font-weight: bold;
-}
-
-#logoFrase a:hover {
-  text-decoration: underline;
-  color: var(--color-gray-500);
 }
 
 #logo {
@@ -35,4 +30,5 @@
 
 #logoLink {
   margin-left: 30px;
+  cursor: pointer;
 }

@@ -54,12 +54,11 @@
     </nav>
     <nav id="content">
       <h1>Upload de Documentos</h1>
-      <input id="fileDocuments"
-             type="file"
-             multiple
-             (change)="onFileSelected($event)"
-             name="arquivos">
-      <ul>
+      <div id="documents">
+        <app-input-file (change)="onFileSelected($event)" name="arquivos"></app-input-file>
+        <p>Não pode ter mais que 5 arquivos</p>
+      </div>
+      <ul id="nameFiles">
         <li *ngFor="let file of selectedFiles">
           {{ file.name }} - {{ (file.size / 1024) | number:'1.0-0' }} KB
         </li>

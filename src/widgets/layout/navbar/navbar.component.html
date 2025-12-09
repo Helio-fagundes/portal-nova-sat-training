@@ -3,42 +3,48 @@
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/newsat" (click)="closeMenu()">
-      <img src="../../../assets/image/add_circle_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="New SAT Icon" id="newSatIcon" class="imgNavBar"/>
+      <img src="../../../assets/image/addition/add_circle_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="New SAT Icon" id="newSatIcon" class="imgNavBar" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/addition/additionWhite.png" alt="New SAT Icon" id="newSatIcon" class="imgNavBar" *ngIf="verifyTheme()"/>
       New SAT
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/home" (click)="closeMenu()">
-      <img src="../../../assets/image/home_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Home Icon" id="homeIcon" class="imgNavBar"/>
+      <img src="../../../assets/image/home/home_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Home Icon" id="homeIcon" class="imgNavBar" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/home/homeWhite.png" alt="Home Icon" id="homeIcon" class="imgNavBar" *ngIf="verifyTheme()"/>
       Home
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/about" (click)="closeMenu()">
-      <img src="../../../assets/image/account_box_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="About Icon" id="aboutIcon" class="imgNavBar"/>
+      <img src="../../../assets/image/about/account_box_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="About Icon" id="aboutIcon" class="imgNavBar" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/about/account_box_white.png" alt="About Icon" id="aboutIcon" class="imgNavBar" *ngIf="verifyTheme()"/>
       About
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/contact" (click)="closeMenu()">
-      <img src="../../../assets/image/contact_page_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Contact Icon" id="contactIcon" class="imgNavBar"/>
+      <img src="../../../assets/image/contact/contact_page_25dp__FILL0_wght400_GRAD0_opsz24.png" alt="Contact Icon" id="contactIcon" class="imgNavBar" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/contact/contactWhite.png" alt="Contact Icon" id="contactIcon" class="imgNavBar" *ngIf="verifyTheme()"/>
       Contact
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/users" (click)="closeMenu()">
-      <img src="../../../assets/image/imageGroupUsers.png" alt="groupt Icon" id="groupIcon" class="imgNavBar"/>
+      <img src="../../../assets/image/users/imageGroupUsers.png" alt="groupt Icon" id="groupIcon" class="imgNavBar" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/users/groupUsersWhite.png" alt="groupt Icon" id="groupIcon" class="imgNavBar" *ngIf="verifyTheme()"/>
       Users
     </a>
   </div>
 
   <div class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a (click)="closeMenu(); openLogout()">
-      <img src="../../../assets/image/botaoLogout.png" id="logoutIcon" class="imgNavBar"/>
+      <img src="../../../assets/image/bottonLogout/buttonLogout.png" id="logoutIcon" class="imgNavBar" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/bottonLogout/buttonLogoutWhite.png" id="logoutIcon" class="imgNavBar" *ngIf="verifyTheme()"/>
       Logout
     </a>
   </div>

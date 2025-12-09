@@ -17,7 +17,7 @@
   width: clamp(280px, 40vw, 380px);
   padding: 25px;
   height: auto;
-  background: var(--color-white);
+  background: var(--color-popup);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   text-align: center;
@@ -76,7 +76,8 @@
 
 #buttonConfirmed {
   background: var(--color-success);
-  color: var(--color-white);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
 }
 
 #buttonCancel {

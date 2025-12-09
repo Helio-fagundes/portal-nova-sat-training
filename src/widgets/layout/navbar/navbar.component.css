@@ -10,7 +10,7 @@
   width: var(--w-1-5);
   height: var(--h-full);
   box-shadow: var(--shadow-sm);
-  background-color: var(--color-gray-400);
+  background-color: var(--color-navbar);
   transition: var(--transition-normal);
 }
 
@@ -22,11 +22,11 @@
   padding-top: var(--space-20);
   height: var(--h-full);
   width: var(--w-full);
+  border-right: 1px solid var(--color-border-navbar) ;
 }
 
 .nav-item {
   height: 40px;
-
   width: var(--w-full);
 }
 
@@ -51,11 +51,13 @@
 
 .imgNavBar{
   margin-right: var(--space-3);
+  width: 25px;
+  height: 25px;
 }
 
 .active {
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-primary-dark);
+  background-color: var(--color-active-primary);
+  border: 1px solid var(--color-border-primary);
 }
 
 .mobileMenu {
@@ -67,7 +69,7 @@
   top: 0;
   height: 250px;
 
-  background-color: var(--color-gray-300);
+  background-color: var(--background-color-menu);
   z-index: var(--z-sticky);
   gap: var(--space-5);
   width: var(--w-full);
@@ -98,14 +100,14 @@
   position: fixed;
   z-index: 101;
 
-  top: var(--space-5);
+  top: var(--space-2);
   right: var(--space-8);
   font-size: var(--font-3xl);
-  color: var(--color-white);
+  color: white;
 }
 
 #menuButton.active{
-  color: var(--color-black);
+  color: var(--color-white);
 }
 
 .logout-overlay {
@@ -129,8 +131,9 @@
 
   border-radius: var(--space-3);
   padding: var(--space-5);
-  background: var(--color-white);
+  background: var(--color-popup);
   box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border-logout);
 }
 
 @keyframes pop {
@@ -142,12 +145,12 @@
   margin-bottom: var(--space-5);
   font-size: var(--font-xl);
   font-weight: var(--font-medium);
+  color: var(--color-black);
 }
 
 .logout-buttons {
   display: flex;
   justify-content: center;
-
   gap: var(--space-4);
 }
 
@@ -155,14 +158,13 @@
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-
+  color: var(--color-black);
   font-size: var(--font-md);
   transition: var(--transition-normal);
   border-radius: var(--radius-md);
 }
 
 .btn-yes {
-  color: var(--color-white);
   background-color: var(--color-danger);
 }
 
@@ -171,12 +173,12 @@
 }
 
 .btn-no {
-  background-color: var(--color-gray-400);
+  background-color: var(--text-muted);
   color: #2c3e50;
 }
 
 .btn-no:hover {
-  background-color: #808080;
+  background-color: #4e4e4e;
 }
 
 @media (max-width: 768px) {

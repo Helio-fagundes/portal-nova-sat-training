@@ -11,8 +11,9 @@ import { UsersFormComponent } from '../features/users/users-form/users-form.comp
 export const routes: Routes = [
   {path: 'home', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
-  {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]},
+  {path: 'about', component: ContactComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UsersFormComponent, canActivate: [AuthGuard]},
+  {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]},
   {path: 'newsat', component: CreateCardComponentComponent, canActivate: [AuthGuard]},
   {path: 'login', component: UiComponent},
   {path: '**', redirectTo: 'login'}

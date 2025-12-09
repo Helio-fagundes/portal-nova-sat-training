@@ -6,11 +6,12 @@ import {CardService} from '../../../shared/card/service/card.service';
 import {Router, RouterLink} from '@angular/router';
 import {Cards} from '../../../shared/card/interface/cards';
 import {UiComponentPopup} from '../../../shared/popus/ui/ui.component';
+import {InputFileComponent} from '../../../shared/input-file/input-file.component';
 
 @Component({
   selector: 'app-create-ui-component',
   standalone: true,
-  imports: [FormsModule, CommonModule, HeaderComponent, RouterLink, UiComponentPopup],
+  imports: [FormsModule, CommonModule, HeaderComponent, RouterLink, UiComponentPopup, InputFileComponent],
   templateUrl: './create-card-component.component.html',
   styleUrl: './create-card-component.component.css'
 })
@@ -40,7 +41,8 @@ export class CreateCardComponentComponent{
   };
 
   onFileSelected(event: any) {
-    this.selectedFiles = Array.from(event.target.files);
+    const files = Array.from(event.target.files) as File[];
+    this.selectedFiles = [...this.selectedFiles, ...files];
   }
 
   submitForm(form: any) {
@@ -60,4 +62,6 @@ export class CreateCardComponentComponent{
     this.cardService.addCard(formData);
     this.showPopup = true;
   }
+
+  protected readonly name = name;
 }

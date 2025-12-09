@@ -14,11 +14,12 @@
 
 #imageCoruja {
   transition: var(--transition-normal);
+  margin-top: 40px;
 }
 
 #tituloInstitucional {
   margin-top: -50px;
-  color: var(--color-primary);
+  color: var(--color-titles);
 }
 
 @media (max-width: 1040px) {
@@ -35,7 +36,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .container {
     grid-template-columns: 80%;
     margin-left: 0;

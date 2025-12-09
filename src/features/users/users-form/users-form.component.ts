@@ -39,4 +39,31 @@ export class UsersFormComponent {
       }
     })
   }
+
+  deleteUsuario(id: string): void{
+    this.userService.delete(id).subscribe({
+      next: (response) => {
+        console.log('Usuário deletado com sucesso', response);
+      },
+      error: (error) => {
+        console.log('Erro ao deletar o usuário', error);
+      }
+    })
+  }
+
+  putUsuario(id: string): void{
+    const updatedData = {
+      name: 'Nome Atualizado',
+      email: 'helioemvezdisso32@gmail.com',
+      password: 'hallo32K@'
+    };
+    this.userService.path(id, updatedData).subscribe({
+      next: (response) => {
+        console.log('Usuário atualizado com sucesso', response);
+      },
+      error: (error) => {
+        console.log('Erro ao atualizar o usuário', error);
+      }
+    });
+  }
 }

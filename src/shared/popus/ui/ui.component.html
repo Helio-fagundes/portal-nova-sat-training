@@ -2,15 +2,18 @@
   <div class="popup-container">
 
     <div *ngIf="typeImg === 'success'" class="icon-wrapper icon-success">
-      <img src="assets/image/successImg.png" />
+      <img src="../../../assets/image/sucess/successImg.png" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/sucess/sucessWhite.png" *ngIf="verifyTheme()"/>
     </div>
 
     <div *ngIf="typeImg === 'warning'" class="icon-wrapper icon-warning">
-      <img src="assets/image/warningImg.png" />
+      <img src="../../../assets/image/warning/warningImg.png" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/warning/warningWhite.png" *ngIf="verifyTheme()"/>
     </div>
 
     <div *ngIf="typeImg === 'error'" class="icon-wrapper icon-error">
-      <img src="assets/image/errorImg.png" />
+      <img src="../../../assets/image/error/errorImg.png" *ngIf="!verifyTheme()"/>
+      <img src="../../../assets/image/error/errorWhite.png" *ngIf="verifyTheme()"/>
     </div>
 
     <h2 *ngIf="title" id="title">{{ title }}</h2>

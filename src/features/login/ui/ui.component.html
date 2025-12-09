@@ -1,8 +1,10 @@
 <div class="containerPrincipal">
 
+  <div id="containerTwoSides">
   <div id="containerContentLogo">
 
-    <img src="assets/image/corujaLogin.png" alt="Logo Coruja" />
+    <img src="../../../assets/image/owls/imagem-coruja.png" alt="Logo Coruja" *ngIf="!verifyTheme()"/>
+    <img src="../../../assets/image/owls/CorujaBrancaLogin.png" alt="Logo Coruja branco" *ngIf="verifyTheme()"/>
 
     <p id="fraseLogo">
       Faça o login para entrar no portal, ou crie uma nova conta!
@@ -172,5 +174,7 @@
     </app-popup>
 
   </div>
+  </div>
 </div>
+<app-button-theme-toggle></app-button-theme-toggle>
 

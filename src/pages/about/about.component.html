@@ -2,7 +2,8 @@
 <app-navbar></app-navbar>
 <body class="container">
     <div id="content">
-        <img src="assets/image/imagem-coruja.png" alt="a imagem de uma coruja para a pagina abut" id="imageCoruja"/>
+        <img src="../../assets/image/owls/imagem-coruja.png" alt="a imagem de uma coruja para a pagina abut" id="imageCoruja" *ngIf="!verifyTheme()"/>
+        <img src="../../assets/image/owls/CorujaBrancaLogin.png" alt="a imagem de uma coruja para a pagina abut" id="imageCoruja" *ngIf="verifyTheme()"/>
         <h1 id="tituloInstitucional">Oque é o portal Nova Sat?</h1>
         <p>O Portal Nova Sat é uma plataforma de treinamento para melhorar as boas praticas no
           angular, e ficar mais familiarizado com o projeto da empresa. Criado por Helio Fagundes,

@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "id": "c981",
-      "name": "helio",
-      "email": "teste@teste.com",
-      "password": "12345"
-    },
-    {
       "id": "700b",
       "name": "torres",
       "email": "teste@teste.com",
@@ -32,14 +26,8 @@
     },
     {
       "id": "18cc",
-      "name": "helio",
-      "email": "helinhofagundespereira@gmail.com",
-      "password": "hallo32K@"
-    },
-    {
-      "id": "cdbf",
-      "name": "helio",
-      "email": "helioemvezdisso@gmail.com",
+      "name": "Nome Atualizado",
+      "email": "helioemvezdisso32@gmail.com",
       "password": "hallo32K@"
     }
   ]

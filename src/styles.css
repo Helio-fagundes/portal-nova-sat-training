@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 body {
@@ -14,22 +15,24 @@ body {
      🎨 PALETA DE CORES
   ======================== */
   --background-register-logo: #ff8054;
-
   --color-botton: #ff6a31;
   --color-botton-dark: #e76334;
-
+  --color-popup: white;
   --background-color: #fafafa;
   --header-background: black;
-  --color-primary-50: #fff4ed;
-  --color-primary-100: #ffe0d1;
-  --color-primary-200: #ffc2a3;
-  --color-primary-300: #ffa173;
-  --color-primary-400: #ff824f;
-  --color-primary-500: #ff6a31;
-  --color-primary-600: #e76334;
-  --color-primary-700: #bf4821;
-  --color-primary-800: #97391a;
-  --color-primary-900: #702b13;
+  --color-navbar: #a3a3a3;
+  --color-mobilemenu: #d4d4d4;
+  --background-color-portal: #fafafa;
+  --color-border-navbar: #6b6b6b;
+  --color-shadow-card:  0 0 12px 0 black;
+  --color-titles: #ff6a31;
+  --background-contact: white;
+  --input-contact: #d4d4d4;
+  --color-border-logout: gray;
+  --color-border-primary: #000000;
+  --color-active-primary: #ff6a31;
+  --background-color-menu: #454545;
+  --color-primary-dark-hover: #835041;
 
   --background-register-50:  #e6eef2;
   --background-register-100: #cddde4;
@@ -42,22 +45,10 @@ body {
   --background-register-800: #0b2029;
   --background-register-900: #061317;
 
-  --color-primary: var(--color-primary-500);
-  --color-primary-hover: var(--color-primary-600);
-  --color-primary-dark: var(--color-primary-800);
-  --color-primary-light: var(--color-primary-200);
-
-  --color-black: #000;
-  --color-white: #fff;
-  --color-gray-100: #f5f5f5;
-  --color-gray-200: #e5e5e5;
-  --color-gray-300: #d4d4d4;
-  --color-gray-400: #a3a3a3;
-  --color-gray-500: #737373;
-  --color-gray-600: #525252;
-  --color-gray-700: #404040;
-  --color-gray-800: #262626;
-  --color-gray-900: #171717;
+  --color-primary: #fb6932;
+  --color-primary-hover: #e76334;
+  --color-primary-dark: #a44222;
+  --color-primary-light: #ffc2a3;
 
   --color-success: #22c55e;
   --color-danger: #ef4444;
@@ -153,6 +144,7 @@ body {
   --w-1-3: 33.33%;
   --w-1-4: 25%;
   --w-1-5: 20%;
+  --width-navBar: 20%;
 
   --h-full: 100%;
   --h-screen: 100vh;
@@ -207,12 +199,24 @@ body {
      🎨 PALETA DE CORES
   ======================== */
 
-  --header-background: #5858f8;
-
+  --header-background: #0D0F12;
+  --color-popup: #1a1d22;
   --background-register-logo: #12151a;
-
   --color-botton: #1a1d22;
   --color-botton-dark: #2a2f36;
+  --background-color-portal: #1a1a1a;
+  --background-color: #1a1a1a;
+  --color-navbar: #11141B;
+  --color-border-navbar: #1F242C;
+  --color-shadow-card:  0 0 12px 0 #0EA5E955;
+  --color-titles: #0EA5E9;
+  --background-contact: #12151a;
+  --input-contact: #1a1d22;
+  --color-border-logout: black;
+  --color-border-primary: #00b1ff;
+  --color-active-primary: rgb(13, 85, 113);
+  --background-color-menu: #8c8c8c;
+  --color-primary-dark-hover: rgb(13, 85, 113);
 
   --background-register-50: #dfe2e6;
   --background-register-100: #c7ccd1;
@@ -225,21 +229,10 @@ body {
   --background-register-800: #0c0e11;
   --background-register-900: #07080a;
 
-  --color-primary-50: #2b1d18;
-  --color-primary-100: #3a241b;
-  --color-primary-200: #5a2e1c;
-  --color-primary-300: #7a3a1f;
-  --color-primary-400: #a44a28;
-  --color-primary-500: #cc5b30;
-  --color-primary-600: #b5522c;
-  --color-primary-700: #8c3d22;
-  --color-primary-800: #6a2d1b;
-  --color-primary-900: #452013;
-
-  --color-primary: var(--color-primary-500);
-  --color-primary-hover: var(--color-primary-400);
-  --color-primary-dark: var(--color-primary-800);
-  --color-primary-light: var(--color-primary-200);
+  --color-primary-dark: rgb(13, 85, 113);
+  --color-primary-hover: #a44a28;
+  --color-primary: #0EA5E9;
+  --color-primary-light: #5a2e1c;
 
   --color-black: #fff;
   --color-white: #000;
@@ -262,16 +255,16 @@ body {
   /* =======================
      📝 TEXTOS
   ======================== */
-  --text-color: #111;
-  --text-light: #555;
-  --text-muted: #888;
-  --text-inverse: white;
+  --text-color: white;
+  --text-light: #888;
+  --text-muted: #555;
+  --text-inverse: black;
 
   /* =======================
      📏 BORDAS
   ======================== */
-  --border-thin: 1px solid #2f2f2f;
-  --border-medium: 2px solid #3d3d3d;
+  --border-thin: 1px solid #1f1f1f;
+  --border-medium: 2px solid #2e2e2e;
   --border-thick: 3px solid #4a4a4a;
 
   /* =======================
@@ -290,6 +283,7 @@ body {
   --opacity-50: 0.45;
   --opacity-75: 0.65;
 
-  --background-color: #121212;
+  --width-navBar: 20%;
+
 }
 

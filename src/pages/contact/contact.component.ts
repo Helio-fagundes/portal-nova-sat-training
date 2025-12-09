@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'app-about',
   imports: [
     NavbarComponent,
     HeaderComponent,

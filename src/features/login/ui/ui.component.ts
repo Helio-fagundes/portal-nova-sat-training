@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {NgIf} from '@angular/common';
 import {UiComponentPopup} from '../../../shared/popus/ui/ui.component';
 import {UsersServiceService} from '../../users/service/usersService.service';
+import {ButtonThemeToggleComponent} from '../../../shared/button-theme-toggle/button-theme-toggle.component';
 
 @Component({
   selector: 'app-ui',
@@ -14,6 +15,7 @@ import {UsersServiceService} from '../../users/service/usersService.service';
     FormsModule,
     NgIf,
     UiComponentPopup,
+    ButtonThemeToggleComponent,
   ],
   templateUrl: './ui.component.html',
   styleUrl: './ui.component.css'
@@ -34,13 +36,15 @@ export class UiComponent {
   protected toggleMenu(): void {
     this.menuIsOpen = !this.menuIsOpen;
   }
-
   protected menuIsOpen: Boolean = false;
   protected popupRegisterToggle: boolean = false;
   protected popupLoginToggle: boolean = false;
   protected popupErrorToggle: boolean = false;
   protected popupEmailExistsToggle: boolean = false;
 
+  verifyTheme(){
+    return document.documentElement.classList.contains('dark');
+}
 
   onConfirmedPopup() {
     if (this.popupLoginToggle) {

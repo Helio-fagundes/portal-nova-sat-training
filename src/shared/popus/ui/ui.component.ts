@@ -16,4 +16,11 @@ export class UiComponentPopup {
   @Input() typeImg: 'success' | 'warning' | 'error' = 'success';
   @Output() confirm = new EventEmitter<void>();
   @Output() cancel = new EventEmitter<void>();
+
+  verifyTheme(){
+    if (document.documentElement.classList.contains('dark')){
+      return true;
+    }
+    return false;
+}
 }

@@ -17,7 +17,7 @@ private apiUrl = '/users';
     };
 
   getById(id: string): Observable<UsersInterface>{
-    return this.http.get<UsersInterface>(`${this.apiUrl}?id=${id}`);
+    return this.http.get<UsersInterface>(`${this.apiUrl}/${id}`);
   }
 
   getByEmail(email: string): Observable<UsersInterface[]> {
@@ -27,4 +27,12 @@ private apiUrl = '/users';
   post(postData: any): Observable<any>{
     return this.http.post<any>(this.apiUrl, postData);
   };
+
+  path(id: string, postData: any): Observable<any>{
+    return this.http.patch<any>(`${this.apiUrl}/${id}`, postData);
+  }
+
+  delete(id: string): Observable<any>{
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }
 }

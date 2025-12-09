@@ -17,6 +17,13 @@ export class NavbarComponent {
               private authService: AuthService) {
   }
 
+  verifyTheme() {
+    if (document.documentElement.classList.contains('dark')) {
+      return true;
+    }
+    return false;
+  }
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }

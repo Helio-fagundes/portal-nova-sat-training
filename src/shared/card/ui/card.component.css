@@ -19,13 +19,13 @@
 }
 
 .card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--color-shadow-card);
   transition: var(--transition-normal);
 }
 
 #colorInCard {
   height: 2px;
-  background-color: var(--color-primary-500);
+  background-color: var(--color-primary);
 }
 
 #numberPaIc {
@@ -54,6 +54,10 @@
   text-align: center;
   margin-top: var(--space-24);
   transition: margin-left var(--transition-normal);
+}
+
+#notHaveCards h1, p{
+  color: var(--text-light);
 }
 
 @media (max-width: 768px) {
