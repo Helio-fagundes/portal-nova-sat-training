@@ -1,7 +1,7 @@
 import { User } from './../../login/interface/User';
 import { Injectable } from '@angular/core';
 import { UsersInterface} from '../interface/UsersInterface';
-import { Observable, catchError, throwError } from 'rxjs';
+import {Observable, catchError, throwError, map} from 'rxjs';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({
@@ -23,6 +23,16 @@ private apiUrl = '/users';
 
   getByEmail(email: string): Observable<UsersInterface[]> {
     return this.http.get<UsersInterface[]>(`${this.apiUrl}?email=${email}`);
+  }
+
+  getByName(name: string): Observable<UsersInterface[]> {
+    return this.http.get<UsersInterface[]>(`${this.apiUrl}`).pipe(
+      map((usuarios: UsersInterface[]) =>
+        usuarios.filter((x) =>
+          x.name.toLowerCase().includes(name.toLowerCase())
+        )
+      )
+    );
   }
 
   post(user: User): Observable<UsersInterface[]>{

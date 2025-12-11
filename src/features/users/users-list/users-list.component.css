@@ -1,0 +1,87 @@
+.container {
+  display: none;
+  grid-template-columns: minmax(500px, 40%);
+  justify-content: center;
+  text-align: start;
+  height: 80%;
+  margin-left: 20%;
+  transition: var(--transition-normal);
+}
+
+.container.open {
+  display: grid;
+}
+
+.contentExternal {
+  background-color: var(--background-contact);
+  border: var(--border-medium);
+  align-items: start;
+  border-radius: var(--radius-lg);
+  margin-top: 150px;
+  padding: 10px;
+}
+
+.contentExternal h1 {
+  color: var(--text-light);
+  margin-top: 50px;
+  margin-left: 20px;
+  text-align: start;
+}
+
+#buttonCreateUser{
+  margin-left: 20px;
+  margin-bottom: 10px;
+  background-color: var(--color-primary);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+#buttonCreateUser:hover{
+  background-color: var(--color-primary-dark);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#thead th {
+  text-align: start;
+  padding: 5px 16px;
+  border-bottom: 1px solid black;
+  color: var(--text-light);
+}
+
+#thName{
+  width: 30%;
+}
+
+#thEmail{
+}
+
+#tbody td {
+  padding: 8px 16px;
+  border-top: 1px solid black;
+  color: var(--text-light);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-contact) inset !important;
+  -webkit-text-fill-color: var(--text-light) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-left: 0;
+    grid-template-columns: minmax(400px, 80%);
+  }
+}

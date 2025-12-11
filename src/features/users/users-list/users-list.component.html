@@ -1,1 +1,24 @@
-<p>users-list works!</p>
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<div class="container" [class.open]="!menuIsOpen">
+  <div class="contentExternal">
+    <h1>Lista de Usuários</h1>
+    <button id="buttonCreateUser" (click)="toggleMenu()">Adicionar usuário</button>
+    <app-search-user (keyup)="keyDownFunction($event)"></app-search-user>
+    <table>
+      <thead>
+        <tr id="thead">
+          <th id="thName">Nome</th>
+          <th id="thEmail">Email</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      <tr *ngFor="let user of listaUsuarios">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

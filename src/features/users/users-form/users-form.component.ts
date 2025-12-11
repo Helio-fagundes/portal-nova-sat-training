@@ -18,6 +18,7 @@ import { ValidationUtils } from '../../../utils/ValidationUtils';
 })
 export class UsersFormComponent {
   user: UsersInterface = {
+    id: '',
     name: '',
     email: '',
     password: ''
@@ -38,7 +39,6 @@ export class UsersFormComponent {
     }
 
   }
-
 
   listaUsuarios: UsersInterface[] = [];
 
@@ -80,7 +80,7 @@ export class UsersFormComponent {
         this.userService.post(this.user).subscribe({
           next: (response) => {
             console.log('Post criado com sucesso', response);
-            this.user = {name: '', email: '', password: ''};
+            this.user = {id: '', name: '', email: '', password: ''};
             this.popupPostCreated = true;
           },
           error: (error) => {
