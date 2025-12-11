@@ -1,3 +1,4 @@
+import { ToggleMenuService } from './../service/ToggleMenuService';
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../../widgets/layout/header/header.component";
 import { NavbarComponent } from "../../../widgets/layout/navbar/navbar.component";
@@ -8,6 +9,7 @@ import { UsersListComponent } from "../users-list/users-list.component";
 import { FormsModule } from "@angular/forms";
 import { UiComponentPopup } from "../../../shared/popus/ui/ui.component";
 import { ValidationUtils } from '../../../utils/ValidationUtils';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
@@ -27,6 +29,8 @@ export class UsersFormComponent {
   protected popupPostCreated: boolean = false;
   protected popupPostError: boolean = false;
   public menuIsOpen: boolean = false;
+  public menuIsOpenUsers: boolean = false;
+
 
   showPopup(){
 
@@ -42,13 +46,19 @@ export class UsersFormComponent {
 
   listaUsuarios: UsersInterface[] = [];
 
-  constructor(public userService: UsersServiceService){}
+  constructor(public userService: UsersServiceService,
+              public toggleMenuService: ToggleMenuService
+  ){}
+
+  toggleMenu() {
+      this.toggleMenuService.toggleMenu();
+    }
 
   getListaUsuarios(): void{
     this.userService.get().subscribe((user) => this.listaUsuarios = user)
   }
 
-  postAdicionarUsuarios(): void{
+  async postAdicionarUsuarios(): Promise<void>{
 
     if (!this.user.name || !this.user.email || !this.user.password) {
       alert('Por favor, preencha todos os campos.');
@@ -69,53 +79,24 @@ export class UsersFormComponent {
       alert('Nome inválido. O nome deve ter pelo menos 4 caracteres e não conter números ou caracteres especiais.');
       return;
     }
-    this.userService.getByEmail(this.user.email).subscribe({
+  /*const users = await firstValueFrom(this.userService.getByEmail(this.user.email));
+  if (users.length > 0) {
+    alert('Email já existe! Por favor, use outro email.');
+    return;
+  }*/
 
-      next: (users) => {
-        if (users.length > 0) {
-          alert('Email já existe! Por favor, use outro email.');
-          return;
-        }
-
-        this.userService.post(this.user).subscribe({
-          next: (response) => {
-            console.log('Post criado com sucesso', response);
-            this.user = {id: '', name: '', email: '', password: ''};
-            this.popupPostCreated = true;
-          },
-          error: (error) => {
-            console.log('o post não foi criado', error);
-            this.popupPostError = true;
-          }
-    })
-   }
-    });
-  }
-
-  deleteUsuario(id: string): void{
-    this.userService.delete(id).subscribe({
-      next: (response) => {
-        console.log('Usuário deletado com sucesso', response);
-      },
-      error: (error) => {
-        console.log('Erro ao deletar o usuário', error);
-      }
-    })
-  }
-
-  putUsuario(id: string): void{
-    const updatedData = {
-      name: 'Nome Atualizado',
-      email: 'helioemvezdisso32@gmail.com',
-      password: 'hallo32K@'
-    };
-    this.userService.path(id, updatedData).subscribe({
-      next: (response) => {
-        console.log('Usuário atualizado com sucesso', response);
-      },
-      error: (error) => {
-        console.log('Erro ao atualizar o usuário', error);
-      }
-    });
-  }
+  this.userService.post(this.user).subscribe({
+    next: (response) => {
+      console.log('Post criado com sucesso', response);
+      this.user = {id: '', name: '', email: '', password: ''};
+      this.toggleMenuService.toggleMenu();
+      this.popupPostCreated = true;
+    },
+    error: (error) => {
+      console.log('o post não foi criado', error);
+      this.popupPostError = true;
+    }
+  });
 }
+}
+

@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 
-<div class="container" [class.open]="menuIsOpen">
+<div class="container" [class.open]="toggleMenuService.menuIsOpen">
   <div class="contentExternal">
     <h1>Criar Usuários</h1>
       <form name="forms" #forms="ngForm" (ngSubmit)="postAdicionarUsuarios()">
@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<app-users-list ></app-users-list>
+<app-users-list></app-users-list>
 
 <app-popup
   *ngIf="popupPostCreated"

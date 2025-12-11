@@ -1,7 +1,4 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
-
-<div class="container" [class.open]="!menuIsOpen">
+<div class="container" [class.open]="!toggleMenuService.menuIsOpen">
   <div class="contentExternal">
     <h1>Lista de Usuários</h1>
     <button id="buttonCreateUser" (click)="toggleMenu()">Adicionar usuário</button>
@@ -11,14 +8,99 @@
         <tr id="thead">
           <th id="thName">Nome</th>
           <th id="thEmail">Email</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody id="tbody">
-      <tr *ngFor="let user of listaUsuarios">
-        <td>{{ user.name }}</td>
-        <td>{{ user.email }}</td>
-      </tr>
+        <tr *ngFor="let user of listaUsuarios">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td class="actions">
+          <button class="edit" (click)="openEditUser(user)"><img src="../../../assets/image/lapisIcon.png"></button>
+          <button class="delete" (click)="deleteUser(user.id)"><img src="../../../assets/image/deleteIcon.png" alt=""></button>
+        </td>
+        </tr>
       </tbody>
     </table>
+    <div id="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1" id="nextPageButton">
+        ←
+      </button>
+
+      <span>Página {{ currentPage }}</span>
+
+      <button
+        (click)="nextPage()"
+        [disabled]="currentPage * limit >= allUsers.length" id="previousPageButton">
+          →
+      </button>
+    </div>
+    <div class="editUser-overlay" *ngIf="showEditUserPopup">
+  <div class="editUser">
+    <h2>Editar o usuário</h2>
+      <form #forms="ngForm" (ngSubmit)="submitEditUser()">
+        <div id="formGroup">
+          <label for="name">Nome: </label>
+          <input
+            type="text"
+            id="input"
+            minlength="4"
+            placeholder="Name"
+            name="name"
+            #name='ngModel'
+            pattern="^[a-zA-Z]*$"
+            required
+            [(ngModel)]="newUser.name"
+            type="text"
+            required>
+
+          <div class="error-message" *ngIf="name.invalid && name.touched">
+            <p *ngIf="name.errors?.['required']">Campo Obrigatório.</p>
+            <p *ngIf="name.errors?.['minlength']">O nome deve ter no minimo 4 letras.</p>
+            <p *ngIf="name.errors?.['pattern']">Nome Invalido.</p>
+          </div>
+
+          <label for="email">Email: </label>
+          <input
+            type="email"
+            id="input"
+            name="email"
+            required
+            placeholder="Email"
+            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+            [(ngModel)]="newUser.email"
+            #email='ngModel'[(ngModel)]="newUser.email">
+
+          <div class="error-message" *ngIf="email.invalid && email.touched">
+            <p *ngIf="email.errors?.['required']">Campo Obrigatório.</p>
+            <p *ngIf="email.errors?.['pattern']">Email Invalido.</p>
+          </div>
+
+          <label for="password">Senha: </label>
+          <input
+            type="password"
+            id="input"
+            name="password"
+            required
+            placeholder="Password"
+            minlength="8"
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$"
+            [(ngModel)]="newUser.password"
+            #password='ngModel'>
+
+          <div class="error-message" *ngIf="password.invalid && password.touched">
+            <p *ngIf="password.errors?.['required']">Campo Obrigatório.</p>
+            <p *ngIf="password.errors?.['pattern']">Senha Invalida.</p>
+            <p *ngIf="password.errors?.['minlenght']">A senha deve ter no minimo 8 digitos</p>
+            <p *ngIf="password.errors?.['pattern']">ela deve conter um caracter especial, letras maiunsculas e minusculas, e numeros.</p>
+          </div>
+
+            <button type="submit" id="buttonSubmit" [disabled]="forms.invalid">
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

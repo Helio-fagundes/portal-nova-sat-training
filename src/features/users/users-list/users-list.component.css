@@ -14,11 +14,13 @@
 
 .contentExternal {
   background-color: var(--background-contact);
+  width: 100%;
   border: var(--border-medium);
   align-items: start;
   border-radius: var(--radius-lg);
   margin-top: 150px;
   padding: 10px;
+  min-height: 650px;
 }
 
 .contentExternal h1 {
@@ -55,19 +57,62 @@ table {
   padding: 5px 16px;
   border-bottom: 1px solid black;
   color: var(--text-light);
+  width: 100%;
 }
 
 #thName{
   width: 30%;
 }
 
-#thEmail{
-}
-
 #tbody td {
-  padding: 8px 16px;
   border-top: 1px solid black;
   color: var(--text-light);
+}
+
+.actions {
+  display: flex;
+}
+
+.actions button {
+  margin: 4px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actions .edit {
+  background-color: #4caf50;
+}
+
+.actions .delete {
+  background-color: #f44336;
+}
+
+#pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#nextPageButton, #previousPageButton{
+  background-color: var(--color-primary);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  border: none;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  margin: 10px;
+  transition: var(--transition-normal);
+}
+
+#nextPageButton:hover, #previousPageButton:hover{
+  background-color: var(--color-primary-dark);
+}
+
+#previousPageButton:disabled, #nextPageButton:disabled{
+  background-color: var(--color-primary-dark);
+  cursor: not-allowed;
 }
 
 input:-webkit-autofill,
@@ -79,9 +124,89 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+.editUser-overlay {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+  width: var(--w-screen);
+  height: var(--h-screen);
+  z-index: var(--z-max);
+  backdrop-filter: var(--blur-sm);
+}
+
+.editUser {
+  width: 320px;
+  text-align: center;
+  animation: pop 0.25s ease-out;
+
+  border-radius: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-popup);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border-logout);
+}
+
+#formGroup{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#formGroup label{
+  color: var(--text-light);
+  text-align: start;
+}
+
+#formGroup input{
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--input-contact);
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid var(--color-danger);
+}
+
+input.ng-valid.ng-touched,
+textarea.ng-valid.ng-touched {
+  border: 1px solid var(--color-success);
+}
+
+.error-message p {
+  color: var(--color-danger);
+  font-size: var(--font-xs);
+  margin: -8px 0 10px 4px;
+}
+
+#formGroup button{
+  background-color: var(--color-titles);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+#formGroup button:hover{
+  background-color: var(--color-primary-dark);
+}
+
 @media (max-width: 767px) {
   .container {
     margin-left: 0;
     grid-template-columns: minmax(400px, 80%);
   }
 }
+
