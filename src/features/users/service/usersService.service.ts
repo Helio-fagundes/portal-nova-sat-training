@@ -39,7 +39,7 @@ private apiUrl = '/users';
     return this.http.post<any>(this.apiUrl, user);
   };
 
-  path(id: string, user: User): Observable<UsersInterface[]>{
+  put(id: string, user: User): Observable<UsersInterface[]>{
     return this.http.patch<any>(`${this.apiUrl}/${id}`, user);
   }
 

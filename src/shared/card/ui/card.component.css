@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: var(--space-5);
-  margin-left: 260px;
+  margin-left: 20%;
   padding: var(--space-5);
   margin-top: var(--space-20);
   transition: var(--transition-normal);
@@ -40,10 +40,24 @@
   margin-bottom: calc(var(--space-4) * -1);
 }
 
+.card-objective{
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
 #description {
   font-weight: var(--font-bold);
   margin-top: var(--space-6);
   margin-bottom: calc(var(--space-4) * -1);
+}
+
+.card-description{
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 #notHaveCards {

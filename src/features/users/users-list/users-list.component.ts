@@ -118,7 +118,7 @@ export class UsersListComponent {
 
     const updatedUser = { ...user, name, email, password };
 
-    this.userService.path(id, updatedUser).subscribe(() => {
+    this.userService.put(id, updatedUser).subscribe(() => {
       const index = this.allUsers.findIndex(u => u.id === user.id);
       this.allUsers[index] = updatedUser;
       this.updatePagination();
@@ -150,7 +150,7 @@ openEditUser(user: UsersInterface) {
 submitEditUser() {
   const updatedUser = { ...this.newUser };
 
-  this.userService.path(this.editingUserId, updatedUser).subscribe(() => {
+  this.userService.put(this.editingUserId, updatedUser).subscribe(() => {
     const index = this.allUsers.findIndex(u => u.id === this.editingUserId);
     this.allUsers[index] = updatedUser;
 

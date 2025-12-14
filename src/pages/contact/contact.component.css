@@ -3,13 +3,17 @@
   justify-content: center;
   align-items: center;
   padding-left: var(--width-navBar);
-  min-height: 100vh;
   text-align: center;
   transition: var(--transition-normal);
+  height: 100%;
 }
 
 #content {
+  display: flex;
+  flex-direction: column;
   width: 50%;
+  height: 90%;
+  margin-top: 80px;
   justify-content: center;
   border: var(--border-medium);
   border-radius: var(--radius-lg);

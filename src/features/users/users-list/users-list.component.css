@@ -18,7 +18,7 @@
   border: var(--border-medium);
   align-items: start;
   border-radius: var(--radius-lg);
-  margin-top: 150px;
+  margin-top: 80px;
   padding: 10px;
   min-height: 650px;
 }
@@ -57,11 +57,20 @@ table {
   padding: 5px 16px;
   border-bottom: 1px solid black;
   color: var(--text-light);
-  width: 100%;
+
 }
 
 #thName{
-  width: 30%;
+  max-width: 160px;
+  justify-content: start;
+}
+
+#thEmail{
+  justify-content: start;
+}
+
+#thAction{
+  text-align: center;
 }
 
 #tbody td {
@@ -69,22 +78,26 @@ table {
   color: var(--text-light);
 }
 
-.actions {
+.tdName {
+  max-width: 160px;
+}
+
+.tdActions {
   display: flex;
 }
 
-.actions button {
+.tdActions button {
   margin: 4px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.actions .edit {
+.tdActions .edit {
   background-color: #4caf50;
 }
 
-.actions .delete {
+.tdActions .delete {
   background-color: #f44336;
 }
 

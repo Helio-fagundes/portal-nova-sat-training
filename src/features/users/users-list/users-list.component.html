@@ -8,14 +8,14 @@
         <tr id="thead">
           <th id="thName">Nome</th>
           <th id="thEmail">Email</th>
-          <th>Ações</th>
+          <th id="thAction">Ações</th>
         </tr>
       </thead>
       <tbody id="tbody">
         <tr *ngFor="let user of listaUsuarios">
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <td class="actions">
+          <td class="tdName">{{ user.name }}</td>
+          <td class="tdEmail">{{ user.email }}</td>
+          <td class="tdActions">
           <button class="edit" (click)="openEditUser(user)"><img src="../../../assets/image/lapisIcon.png"></button>
           <button class="delete" (click)="deleteUser(user.id)"><img src="../../../assets/image/deleteIcon.png" alt=""></button>
         </td>

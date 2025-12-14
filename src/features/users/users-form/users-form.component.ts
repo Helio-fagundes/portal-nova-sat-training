@@ -79,23 +79,31 @@ export class UsersFormComponent {
       alert('Nome inválido. O nome deve ter pelo menos 4 caracteres e não conter números ou caracteres especiais.');
       return;
     }
-  /*const users = await firstValueFrom(this.userService.getByEmail(this.user.email));
-  if (users.length > 0) {
-    alert('Email já existe! Por favor, use outro email.');
-    return;
-  }*/
-
-  this.userService.post(this.user).subscribe({
-    next: (response) => {
-      console.log('Post criado com sucesso', response);
-      this.user = {id: '', name: '', email: '', password: ''};
-      this.toggleMenuService.toggleMenu();
-      this.popupPostCreated = true;
-    },
-    error: (error) => {
-      console.log('o post não foi criado', error);
-      this.popupPostError = true;
+    const users = await firstValueFrom(this.userService.getByEmail(this.user.email));
+    if (users.length > 0) {
+      alert('Email já existe! Por favor, use outro email.');
+      return;
     }
+
+    const userToCreate = {
+      name: this.user.name,
+      email: this.user.email,
+      password: this.user.password
+    };
+
+    this.userService.post(userToCreate).subscribe({
+      next: (response) => {
+        console.log('Post criado com sucesso', response);
+
+        this.user = { id: '', name: '', email: '', password: '' };
+
+        this.toggleMenuService.toggleMenu();
+        this.popupPostCreated = true;
+      },
+      error: (error) => {
+        console.log('o post não foi criado', error);
+        this.popupPostError = true;
+      }
   });
 }
 }
