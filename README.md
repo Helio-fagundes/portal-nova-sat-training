@@ -156,9 +156,3 @@ http://localhost:4200
 Desenvolvido por **Helio Fagundes**
 
 * GitHub: [https://github.com/Helio-fagundes](https://github.com/Helio-fagundes)
-
----
-
-## 📜 Licença
-
-Este projeto é apenas para fins educacionais e de treinamento.
