@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding-top: 80px;
+  height: 90%;
   transition: var(--transition-normal);
+  margin-left: 18%;
 }
 
 #formulario {
@@ -12,7 +13,7 @@
   flex-direction: column;
   border: var(--border-medium);
   border-radius: var(--radius-lg);
-  width: var(--w-1-3);
+  width: var(--w-1-2);
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -136,4 +137,7 @@ textarea.ng-valid.ng-touched {
     padding: var(--space-4);
   }
 
+  .conteiner{
+    margin-left: 0%;
+  }
 }
