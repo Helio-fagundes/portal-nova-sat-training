@@ -93,7 +93,7 @@
           <p *ngIf="password.errors?.['pattern']">ela deve conter um caracter especial, letras maiunsculas e minusculas, e numeros.</p>
         </div>
 
-        <button type="submit" id="buttonSubmitRegistrar" (click)="addUser()" [disabled]="formulario.invalid">Registrar</button>
+        <button type="submit" id="buttonSubmitRegistrar" (click)="register()" [disabled]="formulario.invalid">Registrar</button>
       </div>
       <div id="formGroupLogin" [class.open]="!menuIsOpen">
 

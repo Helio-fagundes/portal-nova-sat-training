@@ -11,64 +11,27 @@ import {UsersServiceService} from '../../users/service/usersService.service';
 export class AuthService {
 
   private readonly TOKEN_KEY = 'auth_token';
+  private ApiUrl = 'http://localhost:8080/auth';
 
   constructor(private router: Router,
-              private userService: UsersServiceService) {}
+              private userService: UsersServiceService,
+              private http: HttpClient) {}
 
-  addUser(user: User): void {
-    this.userService.getByEmail(user.email).subscribe({
-      next: (users) => {
-        if (users.length > 0) {
-          console.error('Email já existe!');
-          return;
-        }
-
-        this.userService.post(user).subscribe({
-          next: (response) => {
-            console.log('Usuário criado:', response);
-          },
-          error: (error) => {
-            console.error('Erro ao criar usuário:', error);
-          }
-        });
-      },
-      error: (error) => {
-        console.error('Erro ao buscar email:', error);
-      }
-    });
+  register(user: User): Observable<any> {
+    return this.http.post<any>(`${this.ApiUrl}/register`, user);
   }
 
-  getUsers(): Observable<User[]>{
-    return this.userService.get();
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.ApiUrl}/login`, { email, password });
   }
 
-  login(email: string, password: string): Observable<string> {
-    return this.getUsers().pipe(
-      map((users: User[]) => {
-        const user = users.find(u => u.email === email && u.password === password);
-
-        if (user) {
-          const fakeToken = 'fake-jwt-token-' + Math.random().toString(36).substring(2);
-          localStorage.setItem(this.TOKEN_KEY, fakeToken);
-          return fakeToken;
-        }
-
-        throw new Error('Credenciais inválidas');
-      }),
-      catchError(() => throwError(() => new Error('Credenciais inválidas')))
-    );
+  logout(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem(this.TOKEN_KEY);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
-  }
-
-  logout() {
-    localStorage.removeItem(this.TOKEN_KEY);
   }
 }
 

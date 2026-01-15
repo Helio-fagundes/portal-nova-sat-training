@@ -5,9 +5,7 @@ import {AuthService} from '../service/auth.service';
 import {Router} from '@angular/router';
 import {NgIf} from '@angular/common';
 import {UiComponentPopup} from '../../../shared/popus/ui/ui.component';
-import {UsersServiceService} from '../../users/service/usersService.service';
 import {ButtonThemeToggleComponent} from '../../../shared/button-theme-toggle/button-theme-toggle.component';
-import {ValidationUtils} from '../../../utils/ValidationUtils';
 
 @Component({
   selector: 'app-ui',
@@ -23,15 +21,9 @@ import {ValidationUtils} from '../../../utils/ValidationUtils';
 })
 export class UiComponent {
 
-  user: User = {
-  name: '',
-  email: '',
-  password: ''
-};
-
-  constructor(public authService: AuthService,
-              public router: Router,
-              public userService: UsersServiceService) {
+  constructor(public router: Router,
+              public authService: AuthService,
+  ) {
   }
 
   protected toggleMenu(): void {
@@ -43,9 +35,39 @@ export class UiComponent {
   protected popupErrorToggle: boolean = false;
   protected popupEmailExistsToggle: boolean = false;
 
-  verifyTheme(){
-    return document.documentElement.classList.contains('dark');
+  user: User = {
+    name: '',
+    email: '',
+    password: ''
+  };
+
+register() {
+  this.authService.register(this.user).subscribe({
+    next: (response) => {
+        this.popupRegisterToggle = true;
+        this.menuIsOpen = !this.menuIsOpen;
+    },
+    error: (error) => {
+      if (error.status === 409) {
+        this.popupEmailExistsToggle = true;
+      } else {
+        this.popupErrorToggle = true;
+      }
+    }
+  });
 }
+
+  login() {
+    this.authService.login(this.user.email, this.user.password).subscribe({
+      next: (response) => {
+        localStorage.setItem('auth_token', response.token);
+        this.popupLoginToggle = true;
+      },
+      error: (error) => {
+        this.popupErrorToggle = true;
+      }
+    });
+  }
 
   onConfirmedPopup() {
     if (this.popupLoginToggle) {
@@ -66,53 +88,8 @@ export class UiComponent {
     }
   }
 
-  addUser() {
-    const isNameValid = ValidationUtils.validationName(this.user.name);
-    const isEmailValid = ValidationUtils.validationEmail(this.user.email);
-    const isPasswordValid = ValidationUtils.validationPassword(this.user.password);
-
-    if (!isNameValid || !isEmailValid || !isPasswordValid) {
-      this.popupErrorToggle = true;
-      return;
-    }
-
-    this.userService.getByEmail(this.user.email).subscribe({
-      next: (users) => {
-        if (users.length > 0) {
-          this.popupEmailExistsToggle = true;
-          return;
-        }
-
-        this.authService.addUser(this.user);
-        this.popupRegisterToggle = true;
-        this.menuIsOpen = false;
-      },
-      error: (err) => {
-        console.error('Erro ao buscar email', err);
-        this.popupErrorToggle = true;
-      }
-    });
-  }
-
-
-  login() {
-    const isEmailValid = ValidationUtils.validationEmail(this.user.email);
-    const isPasswordValid = ValidationUtils.validationPassword(this.user.password);
-
-    if (!isEmailValid || !isPasswordValid) {
-      this.popupErrorToggle = true;
-      return;
-    }
-
-    this.authService.login(this.user.email, this.user.password).subscribe({
-      next: () => {
-        this.popupLoginToggle = true;
-      },
-      error: () => {
-        this.popupErrorToggle = true;
-      }
-    });
-  }
-
+   verifyTheme(){
+    return document.documentElement.classList.contains('dark');
+}
 
 }

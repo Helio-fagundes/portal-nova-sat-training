@@ -80,7 +80,7 @@ export class UsersFormComponent {
       return;
     }
     const users = await firstValueFrom(this.userService.getByEmail(this.user.email));
-    if (users.length > 0) {
+    if (users && users.length > 0) {
       alert('Email já existe! Por favor, use outro email.');
       return;
     }

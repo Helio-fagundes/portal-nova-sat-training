@@ -1,32 +1,31 @@
-import { User } from './../../login/interface/User';
 import { Injectable } from '@angular/core';
-import { UsersInterface} from '../interface/UsersInterface';
-import {Observable, catchError, throwError, map} from 'rxjs';
-import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { UsersInterface } from '../interface/UsersInterface';
+import { Observable, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersServiceService {
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-private apiUrl = '/users';
+  private apiUrl = '/users';
 
-  get(): Observable<UsersInterface[]>{
+  get(): Observable<UsersInterface[]> {
     return this.http.get<UsersInterface[]>(this.apiUrl);
-    };
+  }
 
-  getById(id: string): Observable<UsersInterface>{
+  getById(id: string): Observable<UsersInterface> {
     return this.http.get<UsersInterface>(`${this.apiUrl}/${id}`);
   }
 
-  getByEmail(email: string): Observable<UsersInterface[]> {
-    return this.http.get<UsersInterface[]>(`${this.apiUrl}?email=${email}`);
+  getByEmail(email: string): Observable<UsersInterface[] | null> {
+    return this.http.get<UsersInterface[]>(`${this.apiUrl}/email/${email}`);
   }
 
   getByName(name: string): Observable<UsersInterface[]> {
-    return this.http.get<UsersInterface[]>(`${this.apiUrl}`).pipe(
+    return this.http.get<UsersInterface[]>(this.apiUrl).pipe(
       map((usuarios: UsersInterface[]) =>
         usuarios.filter((x) =>
           x.name.toLowerCase().includes(name.toLowerCase())
@@ -35,15 +34,15 @@ private apiUrl = '/users';
     );
   }
 
-  post(user: User): Observable<UsersInterface[]>{
-    return this.http.post<any>(this.apiUrl, user);
-  };
-
-  put(id: string, user: User): Observable<UsersInterface[]>{
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, user);
+  post(user: any): Observable<UsersInterface> {
+    return this.http.post<UsersInterface>(this.apiUrl, user);
   }
 
-  delete(id: string): Observable<any>{
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  put(id: string, user: any): Observable<UsersInterface> {
+    return this.http.patch<UsersInterface>(`${this.apiUrl}/${id}`, user);
+  }
+
+  delete(id: string): Observable<string> {
+    return this.http.delete<string>(`${this.apiUrl}/${id}`);
   }
 }
