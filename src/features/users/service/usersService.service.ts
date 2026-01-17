@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UsersInterface } from '../interface/UsersInterface';
-import { Observable, map } from 'rxjs';
+import {Observable, map, catchError, of} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -20,8 +20,16 @@ export class UsersServiceService {
     return this.http.get<UsersInterface>(`${this.apiUrl}/${id}`);
   }
 
-  getByEmail(email: string): Observable<UsersInterface[] | null> {
-    return this.http.get<UsersInterface[]>(`${this.apiUrl}/email/${email}`);
+  getByEmail(email: string): Observable<UsersInterface[]> {
+    return this.http.get<UsersInterface[]>(`${this.apiUrl}/email/${email}`)
+      .pipe(
+        catchError(err => {
+          if (err.status === 404) {
+            return of([]);
+          }
+          throw err;
+        })
+      );
   }
 
   getByName(name: string): Observable<UsersInterface[]> {
@@ -38,7 +46,7 @@ export class UsersServiceService {
     return this.http.post<UsersInterface>(this.apiUrl, user);
   }
 
-  put(id: string, user: any): Observable<UsersInterface> {
+  patch(id: string, user: any): Observable<UsersInterface> {
     return this.http.patch<UsersInterface>(`${this.apiUrl}/${id}`, user);
   }
 

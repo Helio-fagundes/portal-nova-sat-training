@@ -68,6 +68,7 @@
 <app-popup
   *ngIf="popupPostCreated"
   title="Sucesso"
+  typeImg="success"
   message="o Usuario foi criado com sucesso"
   confirmText="Ok"
   (confirm)="showPopup()">
@@ -76,7 +77,8 @@
 <app-popup
   *ngIf="popupPostError"
   title="Error"
-  message="o Usuario não foi criado, tente novamente."
+  typeImg="error"
+  message="o Usuario não foi criado, email já existente."
   confirmText="Ok"
   (confirm)="showPopup()">
 </app-popup>

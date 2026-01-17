@@ -12,7 +12,7 @@ import { NavbarComponent } from "../../../widgets/layout/navbar/navbar.component
 @Component({
   selector: 'app-create-ui-component',
   standalone: true,
-  imports: [FormsModule, CommonModule, HeaderComponent, RouterLink, UiComponentPopup, InputFileComponent, NavbarComponent],
+  imports: [FormsModule, CommonModule, HeaderComponent, UiComponentPopup, InputFileComponent, NavbarComponent],
   templateUrl: './create-card-component.component.html',
   styleUrl: './create-card-component.component.css'
 })
@@ -32,36 +32,24 @@ export class CreateCardComponentComponent{
     this.router.navigate(['/home']);
   }
 
-  selectedFiles: File[] = [];
-
   formData:  Cards = {
-    numberPaIc: 0,
+    number: '',
     objective: '',
-    description: '',
-    file: [] as File[]
-  };
-
-  onFileSelected(event: any) {
-    const files = Array.from(event.target.files) as File[];
-    this.selectedFiles = [...this.selectedFiles, ...files];
-  }
+    description: ''};
 
   submitForm(form: any) {
+    if (form.invalid) return;
 
-    if(form.invalid){
-      window.alert('não é possivel criar um card com informações invalidas ou insuficiente.')
-      return
-    }
-    this.formData.file = this.selectedFiles;
-
-    const formData: Cards = {
-      numberPaIc: this.formData.numberPaIc,
+    const payload = {
+      number: this.formData.number,
       objective: this.formData.objective,
-      description: this.formData.description,
-      file: this.formData.file
+      description: this.formData.description
     };
-    this.cardService.addCard(formData);
-    this.showPopup = true;
+
+    this.cardService.create(payload).subscribe({
+      next: () => this.showPopup = true,
+      error: err => console.error(err)
+    });
   }
 
   protected readonly name = name;

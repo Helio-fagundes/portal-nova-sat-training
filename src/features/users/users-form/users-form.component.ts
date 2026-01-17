@@ -79,7 +79,10 @@ export class UsersFormComponent {
       alert('Nome inválido. O nome deve ter pelo menos 4 caracteres e não conter números ou caracteres especiais.');
       return;
     }
-    const users = await firstValueFrom(this.userService.getByEmail(this.user.email));
+    const users = await firstValueFrom(
+      this.userService.getByEmail(this.user.email)
+    );
+
     if (users && users.length > 0) {
       alert('Email já existe! Por favor, use outro email.');
       return;

@@ -118,7 +118,7 @@ export class UsersListComponent {
 
     const updatedUser = { ...user, name, email, password };
 
-    this.userService.put(id, updatedUser).subscribe(() => {
+    this.userService.patch(id, updatedUser).subscribe(() => {
       const index = this.allUsers.findIndex(u => u.id === user.id);
       this.allUsers[index] = updatedUser;
       this.updatePagination();
@@ -147,15 +147,38 @@ openEditUser(user: UsersInterface) {
   };
 }
 
-submitEditUser() {
-  const updatedUser = { ...this.newUser };
+  submitEditUser() {
 
-  this.userService.put(this.editingUserId, updatedUser).subscribe(() => {
-    const index = this.allUsers.findIndex(u => u.id === this.editingUserId);
-    this.allUsers[index] = updatedUser;
+    const payload: any = {};
 
-    this.updatePagination();
-    this.showEditUserPopup = false;
-  });
-}
+    if (this.newUser.name && this.newUser.name.trim() !== '') {
+      payload.name = this.newUser.name;
+    }
+
+    if (this.newUser.email && this.newUser.email.trim() !== '') {
+      payload.email = this.newUser.email;
+    }
+
+    if (this.newUser.password && this.newUser.password.trim() !== '') {
+      payload.password = this.newUser.password;
+    }
+
+    if (Object.keys(payload).length === 0) {
+      alert('Nenhuma alteração foi feita');
+      return;
+    }
+
+    this.userService.patch(this.editingUserId, payload).subscribe(() => {
+      const index = this.allUsers.findIndex(u => u.id === this.editingUserId);
+
+      this.allUsers[index] = {
+        ...this.allUsers[index],
+        ...payload
+      };
+
+      this.updatePagination();
+      this.showEditUserPopup = false;
+    });
+  }
+
 }

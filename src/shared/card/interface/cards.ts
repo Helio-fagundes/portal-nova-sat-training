@@ -1,6 +1,5 @@
 export interface Cards {
-  numberPaIc: number;
+  number: string;
   objective: string;
   description: string;
-  file: File[];
 }

@@ -8,11 +8,11 @@
              type="text"
              name="numeroPAIC"
              placeholder="Numero do PA/IC"
-             maxlength="10"
-             minlength="10"
-             pattern="^[0-9]{10}$"
+             maxlength="12"
+             minlength="12"
+             pattern="^[0-9]{12}$"
              required
-             [(ngModel)]="formData.numberPaIc"
+             [(ngModel)]="formData.number"
              #numeroPAIC="ngModel">
 
       <div class="error-message" *ngIf="numeroPAIC.invalid && numeroPAIC.touched">
@@ -51,18 +51,6 @@
         <p *ngIf="descricao.errors?.['required']">Campo obrigatório.</p>
         <p *ngIf="descricao.errors?.['minlength']">A descrição deve ter pelo menos 20 caracteres.</p>
       </div>
-    </nav>
-    <nav id="content">
-      <h1>Upload de Documentos</h1>
-      <div id="documents">
-        <app-input-file (change)="onFileSelected($event)" name="arquivos"></app-input-file>
-        <p>Não pode ter mais que 5 arquivos</p>
-      </div>
-      <ul id="nameFiles">
-        <li *ngFor="let file of selectedFiles">
-          {{ file.name }} - {{ (file.size / 1024) | number:'1.0-0' }} KB
-        </li>
-      </ul>
     </nav>
 
     <button id="buttonCreateCard"

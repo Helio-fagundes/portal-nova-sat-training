@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable, tap} from 'rxjs';
 import {Cards} from '../interface/cards';
 
 @Injectable({
@@ -7,17 +8,21 @@ import {Cards} from '../interface/cards';
 })
 export class CardService {
 
-  private cardsSource = new BehaviorSubject<any[]>([]);
+  private apiUrl = '/sat';
+  private cardsSource = new BehaviorSubject<Cards[]>([]);
   cards$ = this.cardsSource.asObservable();
 
-  addCard(card: Cards) {
-    const currentCards = this.cardsSource.value;
-    this.cardsSource.next([...currentCards, card]);
+  constructor(private http: HttpClient) {}
+
+  getAll(): Observable<Cards[]> {
+    return this.http.get<Cards[]>(this.apiUrl);
   }
 
-  getCards(){
-    return this.cardsSource.value;
+  getByNumber(numberPaIc: number): Observable<Cards> {
+    return this.http.get<Cards>(`${this.apiUrl}/${numberPaIc}`);
   }
 
-  constructor() { }
+  create(data: any) {
+    return this.http.post(`${this.apiUrl}`, data);
+  }
 }
